@@ -14,3 +14,6 @@ git commit
 sūtam izmaiņas uz github
 git push origin main
 
+
+
+#JustText
