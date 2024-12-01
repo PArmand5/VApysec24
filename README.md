@@ -1,4 +1,7 @@
 # VApysec24
+Nodevumi u.c. lietas, kas saistītas ar kursu. 
+
+
 iegūstam koda bāzi no github/gitlab
 git clone <repository url>
  
