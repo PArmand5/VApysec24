@@ -1,2 +1,2 @@
 # VApysec24
-Nodevumi u.c. lietas, kas saistītas ar kursu. 
+VA Python course exercises 
