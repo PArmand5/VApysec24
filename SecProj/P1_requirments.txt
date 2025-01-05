@@ -1,0 +1,3 @@
+1. Import pandas as pd
+2. Download signin_logs.csv
+3. Chango location at row 5
