@@ -1,4 +1,4 @@
-import pandas as pd
+import pandas as pd # type: ignore
 
 # Get the CSV file
 ## Change location
