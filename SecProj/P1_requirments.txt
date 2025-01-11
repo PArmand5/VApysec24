@@ -1,3 +1,8 @@
+P1.DataTypes
 1. Import pandas as pd
 2. Download signin_logs.csv
-3. Chango location at row 5
+3. Change location at row 5
+
+
+
+P1. 
