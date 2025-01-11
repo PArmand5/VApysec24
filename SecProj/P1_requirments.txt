@@ -1,8 +1,4 @@
-P1.DataTypes
+S1 and S2 Requirements
 1. Import pandas as pd
-2. Download signin_logs.csv
+2. Download signin_logs2.csv
 3. Change location at row 5
-
-
-
-P1. 

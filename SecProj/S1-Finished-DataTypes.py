@@ -2,7 +2,7 @@ import pandas as pd
 
 # Get the CSV file
 ## Change location
-csv_file = r"C:\Users\ArmandsPriede\OneDrive - Vidzemes Augstskola\Pitons\Data\signin_logs.csv"
+csv_file = r"C:\Users\ArmandsPriede\OneDrive - Vidzemes Augstskola\Pitons\Data\signin_logs2.csv"
 
 # Load the CSV file into a DataFrame
 signin_logs_df = pd.read_csv(csv_file)
@@ -43,3 +43,6 @@ for user in filtered_logs[matched_columns["User"]]:
 print("\nUser Sign-In Counts:")
 for user, count in user_counts.items():
     print(f"{user}: {count}")
+
+
+ #End of assignment task, future development in next files
