@@ -1,6 +1,17 @@
-# main.py
-from S3LogAnalyzerMain import LogAnalyzer
+#main.py
+import logging  # CHANGES: Import logging instead of print
+from S3LogAnalyzerMain import LogAnalyzert
 from S31_Whois import whois_lookup
+
+# Configure Logging  # CHANGES
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler("log_analysis.log"),  # CHANGES: Save logs to a file
+        logging.StreamHandler()  # CHANGES: Show logs in the terminal
+    ]
+)
 
 ## Change location
 csv_file = r"C:\Users\ArmandsPriede\OneDrive - Vidzemes Augstskola\Pitons\Data\signin_logs2.csv"
@@ -17,21 +28,20 @@ field_mapping = {
     "Resource": "Resource"
 }
 
-
-#Creating instance of LogAnalyzer and launching it
+# Creating instance of LogAnalyzer and launching it
 analyzer = LogAnalyzer(csv_file=csv_file, field_mapping=field_mapping)
 
-analyzer.load_csv()  #File
-analyzer.match_columns()  #matching
-correlations = analyzer.filter_correlations()  #Filtering
-analyzer.display_results(correlations)  #Display
+analyzer.load_csv()  # File
+analyzer.match_columns()  # Matching
+correlations = analyzer.filter_correlations()  # Filtering
+analyzer.display_results(correlations)  # Display
 
-#Example of using a range loop for counting total correlations (Range Loop)
+# Example of using a range loop for counting total correlations (Range Loop)
 total_correlations = 0
 for _ in range(len(correlations)): 
     total_correlations += 1
 
-print("Total Correlations Found: {}".format(total_correlations))
+logging.info("Total Correlations Found: {}".format(total_correlations))  # CHANGES
 
 # Error handling, source CHAT GPT!!!
 while True:
@@ -42,11 +52,11 @@ while True:
             selected_entry = correlations[x - 1]  # Get the selected log entry (0-based index)
             ip_address = selected_entry["IP Address"]
             whois_result = whois_lookup(ip_address)  # Perform WHOIS lookup
-            print("\nWHOIS Lookup Result for Log Entry {}: {}".format(x, whois_result))
+            logging.info("\nWHOIS Lookup Result for Log Entry {}: {}".format(x, whois_result))  # CHANGES
         else:
-            print("Invalid entry number. Please enter a number between 1 and {}.".format(len(correlations)))
+            logging.warning("Invalid entry number. Please enter a number between 1 and {}.".format(len(correlations)))  # CHANGES
         break
     except ValueError:
-        print("Oops! That was not a valid number! Try again...") #Example from lection presentations
+        logging.error("Oops! That was not a valid number! Try again...")  # CHANGES
 
-#End of code
+# End of code
