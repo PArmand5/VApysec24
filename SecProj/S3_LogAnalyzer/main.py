@@ -1,6 +1,7 @@
 #main.py
 import logging  # CHANGES: Import logging instead of print
-from S3LogAnalyzerMain import LogAnalyzert
+import os  # CHANGES: Import os for file checking
+from S3LogAnalyzerMain import LogAnalyzer
 from S31_Whois import whois_lookup
 
 # Configure Logging  # CHANGES
@@ -15,6 +16,16 @@ logging.basicConfig(
 
 ## Change location
 csv_file = r"C:\Users\ArmandsPriede\OneDrive - Vidzemes Augstskola\Pitons\Data\signin_logs2.csv"
+
+# Exception Handling if file is misssing # CHANGES
+try:
+    if not os.path.exists(csv_file):
+        raise FileNotFoundError(f"Error: File not found!!!: {csv_file}")  # CHANGES
+    logging.info(f"CSV file found at: {csv_file}")  # CHANGES
+except FileNotFoundError as e:
+    logging.error(e)  # CHANGES
+    exit(1)  # CHANGES: Exit the script
+
 
 # Define substrings to match for each key field (Dictionary). Links file information to code
 field_mapping = {
